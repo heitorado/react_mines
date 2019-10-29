@@ -21,6 +21,9 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 
+import params from './src/params'
+import Field from './src/components/Field'
+
 class App extends Component {
   render() {
     return (
@@ -32,6 +35,7 @@ class App extends Component {
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
                 <Text>Iniciando o Mines!</Text>
+                <Field/>
               </View>
             </View>
           </ScrollView>
