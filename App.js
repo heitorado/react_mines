@@ -36,6 +36,12 @@ class App extends Component {
               <View style={styles.sectionContainer}>
                 <Text>Iniciando o Mines!</Text>
                 <Field/>
+                <Field opened/>
+                <Field opened nearMines={1}/>
+                <Field opened nearMines={2}/>
+                <Field opened nearMines={3}/>
+                <Field opened nearMines={6}/>
+                <Field opened nearMines={8}/>
               </View>
             </View>
           </ScrollView>
