@@ -23,8 +23,30 @@ import {
 
 import params from './src/params'
 import Field from './src/components/Field'
+import MineField from './src/components/MineField'
+import { createMinedBoard } from './src/functions'
 
 class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = this.createState()
+  }
+
+  minesAmount = () => {
+    const cols = params.getColumnsAmount()
+    const rows = params.getRowsAmount()
+    return Math.ceil(cols * rows * params.difficultyLevel)
+  }
+
+  createState = () => {
+    const cols = params.getColumnsAmount()
+    const rows = params.getRowsAmount()
+    return {
+      board: createMinedBoard(rows, cols, this.minesAmount()),
+    }
+  }
+
   render() {
     return (
       <>
@@ -33,15 +55,11 @@ class App extends Component {
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
             <View style={styles.body}>
-              <View style={styles.sectionContainer}>
+              <View style={styles.container}>
                 <Text>Iniciando o Mines!</Text>
-                <Field/>
-                <Field opened/>
-                <Field opened nearMines={1}/>
-                <Field opened nearMines={2}/>
-                <Field opened nearMines={3}/>
-                <Field opened nearMines={6}/>
-                <Field opened nearMines={8}/>
+                <View style={styles.board}>
+                  <MineField board={this.state.board} />
+                </View>
               </View>
             </View>
           </ScrollView>
@@ -52,6 +70,15 @@ class App extends Component {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'flex-end'
+  },
+  board:{
+    alignItems: 'center',
+    backgroundColor: '#AAA',
+  },
+  
   scrollView: {
     backgroundColor: Colors.lighter,
   },
@@ -62,10 +89,7 @@ const styles = StyleSheet.create({
   body: {
     backgroundColor: Colors.white,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
+  
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
