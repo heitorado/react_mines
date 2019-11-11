@@ -11,6 +11,7 @@ import {
 import params from './src/params'
 import Field from './src/components/Field'
 import MineField from './src/components/MineField'
+import Header from './src/components/Header'
 import { 
   createMinedBoard,
   cloneBoard,
@@ -79,7 +80,7 @@ class App extends Component {
     return (
       <>
         <View style={styles.container}>
-          <Text>Iniciando o Mines!</Text>
+          <Header flagsLeft={this.minesAmount() - flagsUsed(this.state.board)} onNewGame={() => this.setState(this.createState())}/>
           <View style={styles.board}>
             <MineField board={this.state.board} onOpenField={this.onOpenField} onSelectField={this.onSelectField}/>
           </View>
