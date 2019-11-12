@@ -8,18 +8,20 @@ export default props => {
            animationType='slide'
            transparent={true}>
       <View style={styles.frame}>
-        <Text style={styles.title}>
-          Select difficulty
-        </Text>
-        <TouchableOpacity style={[styles.button, styles.bgEasy]} onPress={() => props.onLevelSelected(0.1)}>
-          <Text style={styles.buttonLabel}>Easy</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.bgMedium]} onPress={() => props.onLevelSelected(0.2)}>
-          <Text style={styles.buttonLabel}>Medium</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.bgHard]} onPress={() => props.onLevelSelected(0.3)}>
-          <Text style={styles.buttonLabel}>Hard</Text>
-        </TouchableOpacity>
+        <View style={styles.container}>
+          <Text style={styles.title}>
+            Select difficulty
+          </Text>
+          <TouchableOpacity style={[styles.button, styles.bgEasy]} onPress={() => props.onLevelSelected(0.1)}>
+            <Text style={styles.buttonLabel}>Easy</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.button, styles.bgMedium]} onPress={() => props.onLevelSelected(0.2)}>
+            <Text style={styles.buttonLabel}>Medium</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.button, styles.bgHard]} onPress={() => props.onLevelSelected(0.3)}>
+            <Text style={styles.buttonLabel}>Hard</Text>
+          </TouchableOpacity>
+        </View>      
       </View>      
     </Modal>
   )
